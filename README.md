@@ -7,7 +7,8 @@ Including DFS Pulse Tester, Spectrum Painter, and more!
 Follow these steps to automatically setup and provision an Ubuntu virtual machine (VM) with the necessary software and libraries to run the tools for CodeRGV WiFi Pen Testing. If you already have an environment setup to use your HackRF, you can skip to "Launching the DFS Pulse Tester"
 
 1. Install [Vagrant](https://www.vagrantup.com/downloads.html), [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and the [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads) (required to enable USB support in VirtualBox). If you have any of these components already installed, please make sure you're running the latest version.
-2. Setup and provision the VM automatically using Vagrant:
+2. Please note, from start to finish, this may take about 10 minutes. Please be patient as the VM is setup and configured.
+Setup and provision the VM automatically using Vagrant:
 ```bash
 git clone https://github.com/Drew-CodeRGV/CodeRGV_WiFi_Pen_testing.git
 cd CodeRGV_WiFi_Pen_testing
