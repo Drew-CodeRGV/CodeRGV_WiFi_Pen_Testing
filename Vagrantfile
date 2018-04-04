@@ -5,19 +5,23 @@ bootstrap = <<SCRIPT
   usermod -a -G plugdev codergv
   apt-get install git
   git clone https://github.com/Drew-CodeRGV/CodeRGV_spectrum_painter.git
-  mv /home/ubuntu/CodeRGV_spectrum_painter /home/hackrf/CodeRGV_spectrum_painter
+  mv /home/vagrant/CodeRGV_spectrum_painter /home/hackrf/CodeRGV_spectrum_painter
   cd /home/hackrf/CodeRGV_spectrum_painter
   chmod 777 codergv.sh
   chmod 777 codergv-lp.sh
   chmod 777 jam.sh
   wget https://www.dropbox.com/s/603500m4xiozw8u/codergv.iqhackrf?dl=0
+  mv codergv.iqhackrf?dl=0 CodeRGV_spectrum_painter/codergv.iqhackrf
   wget https://www.dropbox.com/s/vtmjrzzgvhgor01/jam.iqhackrf?dl=0
+  mv jam.iqhackrf?dl=0 CodeRGV_spectrum_painter/jam.iqhackrf
   sudo ap-get install python-pip
+  pip install click
+  python pip install numpy scipy matplotlib ipython jupyter pandas sympy nose
   apt-get update
   apt-get install -y ubuntu-desktop gnuradio hackrf gr-osmosdr
   echo ATTR{idVendor}=="1d50", ATTR{idProduct}=="6089", SYMLINK+="hackrf-one-%k", MODE="660", GROUP="plugdev" > /etc/udev/rules.d/52-hackrf.rules
   udevadm control --reload-rules
-  mv /home/ubuntu/dfs_pulse_tester.grc /home/hackrf/dfs_pulse_tester.grc && chown hackrf.hackrf /home/hackrf/*.grc
+  mv /home/vagrant/dfs_pulse_tester.grc /home/hackrf/dfs_pulse_tester.grc && chown hackrf.hackrf /home/hackrf/*.grc
 
 
 SCRIPT
