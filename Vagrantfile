@@ -3,9 +3,21 @@ bootstrap = <<SCRIPT
   apt-get install -y ubuntu-desktop gnuradio hackrf gr-osmosdr
   useradd -m hackrf --groups sudo && echo "hackrf:hackrf" | chpasswd && su -c "printf 'cd /home/hackrf\nsudo su hackrf' >> .bash_profile" -s /bin/sh ubuntu
   usermod -a -G plugdev hackrf
+  useradd -m codergv --groups sudo && echo "codergv:codergv" | chpasswd && su -c "printf 'cd /home/codergv\nsudo su codergv' >> .bash_profile" -s /bin/sh ubuntu
+  usermod -a -G plugdev codergv
   echo ATTR{idVendor}=="1d50", ATTR{idProduct}=="6089", SYMLINK+="hackrf-one-%k", MODE="660", GROUP="plugdev" > /etc/udev/rules.d/52-hackrf.rules
   udevadm control --reload-rules
   mv /home/ubuntu/dfs_pulse_tester.grc /home/hackrf/dfs_pulse_tester.grc && chown hackrf.hackrf /home/hackrf/*.grc
+  apt-get install git
+  git clone https://github.com/Drew-CodeRGV/CodeRGV_spectrum_painter.git
+  mv /home/ubuntu/CodeRGV_spectrum_painter /home/hackrf/CodeRGV_spectrum_painter
+  cd /home/hackrf/CodeRGV_spectrum_painter
+  chmod 777 codergv.sh
+  chmod 777 codergv-lp.sh
+  chmod 777 jam.sh
+  wget https://www.dropbox.com/s/603500m4xiozw8u/codergv.iqhackrf?dl=0
+  wget https://www.dropbox.com/s/vtmjrzzgvhgor01/jam.iqhackrf?dl=0
+
 SCRIPT
 
 Vagrant.configure(2) do |config|
@@ -17,7 +29,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provider "virtualbox" do |vb|
-    vb.name = "HackRF"
+    vb.name = "CodeRGV HackRF"
     vb.memory = "4096"
     vb.customize ["modifyvm", :id, "--vram", "32"]
     vb.customize ["modifyvm", :id, "--accelerate3d", "on"]
