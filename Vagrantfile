@@ -1,7 +1,5 @@
 bootstrap = <<SCRIPT
-  
-  apt-get update
-  apt-get install -y ubuntu-desktop gnuradio hackrf gr-osmosdr
+
   useradd -m hackrf --groups sudo && echo "hackrf:hackrf" | chpasswd && su -c "printf 'cd /home/hackrf\nsudo su hackrf' >> .bash_profile" -s /bin/sh ubuntu
   usermod -a -G plugdev hackrf
   useradd -m codergv --groups sudo && echo "codergv:codergv" | chpasswd && su -c "printf 'cd /home/codergv\nsudo su codergv' >> .bash_profile" -s /bin/sh ubuntu
@@ -14,11 +12,17 @@ bootstrap = <<SCRIPT
   chmod 777 codergv-lp.sh
   chmod 777 jam.sh
   wget https://www.dropbox.com/s/603500m4xiozw8u/codergv.iqhackrf?dl=0
-  mv codergv.iqhackrf?dl=0 CodeRGV_spectrum_painter/codergv.iqhackrf
+  mv codergv.iqhackrf?dl=0 codergv.iqhackrf
   wget https://www.dropbox.com/s/vtmjrzzgvhgor01/jam.iqhackrf?dl=0
-  mv jam.iqhackrf?dl=0 CodeRGV_spectrum_painter/jam.iqhackrf
+  mv jam.iqhackrf?dl=0 jam.iqhackrf
+
+  apt-get update
+  apt-get install -y ubuntu-desktop gnuradio hackrf gr-osmosdr
+  
   echo ATTR{idVendor}=="1d50", ATTR{idProduct}=="6089", SYMLINK+="hackrf-one-%k", MODE="660", GROUP="plugdev" > /etc/udev/rules.d/52-hackrf.rules
   udevadm control --reload-rules
+  
+  cd
   mv /home/vagrant/dfs_pulse_tester.grc /home/hackrf/dfs_pulse_tester.grc && chown hackrf.hackrf /home/hackrf/*.grc
 
 SCRIPT
