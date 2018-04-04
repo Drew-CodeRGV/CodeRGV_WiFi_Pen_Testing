@@ -44,7 +44,7 @@ For more information on DFS in the context of Wi-Fi networks see [A Practical In
 
 
 
-## Authors
+## Authors of DFS Pulse Tester
 
 * Adrian Granados - [@adriangranados](https://twitter.com/adriangranados)
 * Nigel Bowden - [@wifinigel](https://twitter.com/wifinigel)
