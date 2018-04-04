@@ -12,6 +12,7 @@ bootstrap = <<SCRIPT
   chmod 777 jam.sh
   wget https://www.dropbox.com/s/603500m4xiozw8u/codergv.iqhackrf?dl=0
   wget https://www.dropbox.com/s/vtmjrzzgvhgor01/jam.iqhackrf?dl=0
+  sudo ap-get install python-pip
   apt-get update
   apt-get install -y ubuntu-desktop gnuradio hackrf gr-osmosdr
   echo ATTR{idVendor}=="1d50", ATTR{idProduct}=="6089", SYMLINK+="hackrf-one-%k", MODE="660", GROUP="plugdev" > /etc/udev/rules.d/52-hackrf.rules
